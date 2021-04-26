@@ -7,11 +7,10 @@ const keyNameMap = {
 }
 
 export default class SimpleWebGraphics {
-  constructor(canvasElemId) {
-    const canvas = document.getElementById(canvasElemId);
-    this._ctx = canvas.getContext("2d");
-    this.canvasWidth = canvas.width
-    this.canvasHeight = canvas.height
+  constructor(canvasElement) {
+    this._ctx = canvasElement.getContext("2d");
+    this.canvasWidth = canvasElement.width
+    this.canvasHeight = canvasElement.height
 
     this._keysDown = {}
 
