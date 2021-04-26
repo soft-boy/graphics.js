@@ -3,7 +3,16 @@ const keyNameMap = {
   ArrowDown: 'down',
   ArrowLeft: 'left',
   ArrowRight: 'right',
-  ' ': 'space'
+  ' ': 'space',
+  Enter: 'enter',
+  Backspace: 'backspace',
+  Shift: 'shift',
+  Tab: 'tab',
+  Alt: 'alt',
+  Control: 'control',
+  Meta: 'meta',
+  CapsLock: 'capslock',
+  Escape: 'escape'
 };
 const keysDown = {};
 export const keyboardMixin = {
