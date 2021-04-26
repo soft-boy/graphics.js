@@ -1,0 +1,25 @@
+{
+  "name": "simple-web-graphics",
+  "version": "0.0.1",
+  "main": "./build/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "babel index.js --out-dir ./build/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/soft-boy/simple-web-graphics.git"
+  },
+  "author": "Eric Wang",
+  "license": "CPL-1.0",
+  "bugs": {
+    "url": "https://github.com/soft-boy/simple-web-graphics/issues"
+  },
+  "homepage": "https://github.com/soft-boy/simple-web-graphics#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.13.16",
+    "@babel/core": "^7.13.16",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-private-methods": "^7.13.0"
+  }
+}
