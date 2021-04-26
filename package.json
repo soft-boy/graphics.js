@@ -4,7 +4,7 @@
   "main": "./build/index.js",
   "type": "module",
   "scripts": {
-    "build": "babel ./src/index.js --out-dir ./build/"
+    "build": "babel src --out-dir build"
   },
   "repository": {
     "type": "git",
