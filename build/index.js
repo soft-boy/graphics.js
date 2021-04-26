@@ -1,14 +1,8 @@
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-const keyNameMap = {
-  'ArrowUp': 'up',
-  'ArrowDown': 'down',
-  'ArrowLeft': 'left',
-  'ArrowRight': 'right',
-  ' ': 'space'
-};
+import { keyNameMap } from './constants';
 export default class SimpleWebGraphics {
-  constructor(canvasElemId) {
+  constructor(canvasElement) {
     _defineProperty(this, "setup", () => {});
 
     _defineProperty(this, "update", () => {});
@@ -56,10 +50,9 @@ export default class SimpleWebGraphics {
       setInterval(this._iterateGraphics, 10);
     });
 
-    const canvas = document.getElementById(canvasElemId);
-    this._ctx = canvas.getContext("2d");
-    this.canvasWidth = canvas.width;
-    this.canvasHeight = canvas.height;
+    this._ctx = canvasElement.getContext("2d");
+    this.canvasWidth = canvasElement.width;
+    this.canvasHeight = canvasElement.height;
     this._keysDown = {};
     this.mouseX = 0;
     this.mouseY = 0;

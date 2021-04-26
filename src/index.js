@@ -1,11 +1,4 @@
-const keyNameMap = {
-  'ArrowUp': 'up',
-  'ArrowDown': 'down',
-  'ArrowLeft': 'left',
-  'ArrowRight': 'right',
-  ' ': 'space',
-}
-
+import { keyNameMap } from './constants'
 export default class SimpleWebGraphics {
   constructor(canvasElement) {
     this._ctx = canvasElement.getContext("2d");
