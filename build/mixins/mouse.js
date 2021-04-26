@@ -1,4 +1,4 @@
-export default keyboardMixin = {
+export const keyboardMixin = {
   mouseX: 0,
   mouseY: 0,
 

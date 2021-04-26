@@ -5,25 +5,24 @@ const keyNameMap = {
   ArrowRight: 'right',
   ' ': 'space'
 };
-export default keyboardMixin = {
-  _keysDown: {},
-
+const keysDown = {};
+export const keyboardMixin = {
   _keyDownHandler(e) {
     const key = keyNameMap[e.key] || e.key;
-    this._keysDown[key] = true;
+    keysDown[key] = true;
   },
 
   _keyUpHandler(e) {
     const key = keyNameMap[e.key] || e.key;
-    this._keysDown[key] = false;
+    keysDown[key] = false;
   },
 
   isKeyDown(key) {
-    if (!(key in this._keysDown)) {
+    if (!(key in keysDown)) {
       return false;
     }
 
-    return this._keysDown[key];
+    return keysDown[key];
   }
 
 };

@@ -1,5 +1,5 @@
-import keyboardMixin from './mixins/keyboard'
-import mouseMixin from './mixins/mouse'
+import { keyboardMixin } from './mixins/keyboard'
+import { mouseMixin } from './mixins/mouse'
 export default class SimpleWebGraphics {
   constructor(canvasElement) {
     this._ctx = canvasElement.getContext('2d')
