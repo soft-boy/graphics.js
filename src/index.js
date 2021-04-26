@@ -1,7 +1,7 @@
 import { keyNameMap } from './constants'
 export default class SimpleWebGraphics {
   constructor(canvasElement) {
-    this._ctx = canvasElement.getContext("2d");
+    this._ctx = canvasElement.getContext('2d')
     this.canvasWidth = canvasElement.width
     this.canvasHeight = canvasElement.height
 
@@ -10,9 +10,9 @@ export default class SimpleWebGraphics {
     this.mouseX = 0
     this.mouseY = 0
 
-    document.addEventListener("keydown", this._keyDownHandler, false);
-    document.addEventListener("keyup", this._keyUpHandler, false);
-    document.addEventListener("mousemove", this._mouseMoveHandler, false);
+    document.addEventListener('keydown', this._keyDownHandler, false)
+    document.addEventListener('keyup', this._keyUpHandler, false)
+    document.addEventListener('mousemove', this._mouseMoveHandler, false)
   }
 
   // user override methods
@@ -45,7 +45,7 @@ export default class SimpleWebGraphics {
   }
 
   _clearCanvas = () => {
-    this._ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight);
+    this._ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
   }
 
   _iterateGraphics = () => {

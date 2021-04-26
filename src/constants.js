@@ -1,7 +1,7 @@
 export const keyNameMap = {
-  'ArrowUp': 'up',
-  'ArrowDown': 'down',
-  'ArrowLeft': 'left',
-  'ArrowRight': 'right',
+  ArrowUp: 'up',
+  ArrowDown: 'down',
+  ArrowLeft: 'left',
+  ArrowRight: 'right',
   ' ': 'space',
 }
