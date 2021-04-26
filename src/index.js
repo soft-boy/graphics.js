@@ -1,17 +1,16 @@
-import { keyNameMap } from './constants'
+import keyboardMixin from './mixins/keyboard'
+import mouseMixin from './mixins/mouse'
 export default class SimpleWebGraphics {
   constructor(canvasElement) {
     this._ctx = canvasElement.getContext('2d')
     this.canvasWidth = canvasElement.width
     this.canvasHeight = canvasElement.height
 
-    this._keysDown = {}
-
-    this.mouseX = 0
-    this.mouseY = 0
-
+    Object.assign(this, keyboardMixin)
     document.addEventListener('keydown', this._keyDownHandler, false)
     document.addEventListener('keyup', this._keyUpHandler, false)
+
+    Object.assign(this, mouseMixin)
     document.addEventListener('mousemove', this._mouseMoveHandler, false)
   }
 
@@ -19,26 +18,6 @@ export default class SimpleWebGraphics {
   setup = () => {}
   update = () => {}
   draw = () => {}
-
-  _keyDownHandler = (e) => {
-    const key = keyNameMap[e.key] || e.key
-    this._keysDown[key] = true
-  }
-
-  _keyUpHandler = (e) => {
-    const key = keyNameMap[e.key] || e.key
-    this._keysDown[key] = false
-  }
-
-  isKeyDown = (key) => {
-    if (!(key in this._keysDown)) {
-      return false
-    }
-
-    return this._keysDown[key]
-  }
-
-  _mouseMoveHandler = () => {}
 
   fillRect = (x, y, width, height) => {
     this._ctx.fillRect(x, y, width, height)
