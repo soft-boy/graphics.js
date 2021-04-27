@@ -1,9 +1,19 @@
 export const keyboardMixin = {
   mouseX: 0,
   mouseY: 0,
+  mouseDown: false,
 
-  _mouseMoveHandler() {
-    return;
+  _mouseMoveHandler(e) {
+    this.mouseX = e.offsetX;
+    this.mouseY = e.offsetY;
+  },
+
+  _mouseDownHandler() {
+    this.mouseDown = true;
+  },
+
+  _mouseUpHandler() {
+    this.mouseDown = false;
   }
 
 };

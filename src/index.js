@@ -7,11 +7,25 @@ export default class SimpleWebGraphics {
     this.canvasHeight = canvasElement.height
 
     Object.assign(this, keyboardMixin)
-    document.addEventListener('keydown', this._keyDownHandler, false)
-    document.addEventListener('keyup', this._keyUpHandler, false)
+    canvasElement.addEventListener('keydown', this._keyDownHandler, false)
+    canvasElement.addEventListener('keyup', this._keyUpHandler, false)
 
     Object.assign(this, mouseMixin)
-    document.addEventListener('mousemove', this._mouseMoveHandler, false)
+    canvasElement.addEventListener(
+      'mousemove',
+      this._mouseMoveHandler.bind(this),
+      false
+    )
+    canvasElement.addEventListener(
+      'mousedown',
+      this._mouseDownHandler.bind(this),
+      false
+    )
+    canvasElement.addEventListener(
+      'mouseup',
+      this._mouseUpHandler.bind(this),
+      false
+    )
   }
 
   // user override methods

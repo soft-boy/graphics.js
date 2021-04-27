@@ -1,11 +1,11 @@
 {
   "name": "simple-web-graphics",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "./build/index.js",
   "type": "module",
   "scripts": {
-    "build": "babel src --out-dir build",
-    "format": "prettier --write ."
+    "build": "npx babel src --out-dir build",
+    "format": "npx prettier --write ."
   },
   "repository": {
     "type": "git",
