@@ -1,4 +1,4 @@
-export const keyboardMixin = {
+export const mouseMixin = {
   mouseX: 0,
   mouseY: 0,
   mouseDown: false,
