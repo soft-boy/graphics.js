@@ -35,8 +35,8 @@ export default class SimpleWebGraphics {
     this.canvasWidth = canvasElement.width;
     this.canvasHeight = canvasElement.height;
     Object.assign(this, keyboardMixin);
-    canvasElement.addEventListener('keydown', this._keyDownHandler, false);
-    canvasElement.addEventListener('keyup', this._keyUpHandler, false);
+    document.addEventListener('keydown', this._keyDownHandler, false);
+    document.addEventListener('keyup', this._keyUpHandler, false);
     Object.assign(this, mouseMixin);
     canvasElement.addEventListener('mousemove', this._mouseMoveHandler.bind(this), false);
     canvasElement.addEventListener('mousedown', this._mouseDownHandler.bind(this), false);

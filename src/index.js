@@ -7,8 +7,8 @@ export default class SimpleWebGraphics {
     this.canvasHeight = canvasElement.height
 
     Object.assign(this, keyboardMixin)
-    canvasElement.addEventListener('keydown', this._keyDownHandler, false)
-    canvasElement.addEventListener('keyup', this._keyUpHandler, false)
+    document.addEventListener('keydown', this._keyDownHandler, false)
+    document.addEventListener('keyup', this._keyUpHandler, false)
 
     Object.assign(this, mouseMixin)
     canvasElement.addEventListener(
