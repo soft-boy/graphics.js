@@ -1,54 +1,42 @@
-import { keyboardMixin } from './mixins/keyboard'
-import { mouseMixin } from './mixins/mouse'
-export default class SimpleWebGraphics {
+import KeyboardMixin from './mixins/keyboard'
+import MouseMixin from './mixins/mouse'
+
+window._graphics = null
+
+class Base {}
+class SimpleWebGraphics extends KeyboardMixin(MouseMixin(Base)) {
   constructor(canvasElement) {
-    this._ctx = canvasElement.getContext('2d')
-    this.canvasWidth = canvasElement.width
-    this.canvasHeight = canvasElement.height
+    super(canvasElement)
 
-    Object.assign(this, keyboardMixin)
-    document.addEventListener('keydown', this._keyDownHandler, false)
-    document.addEventListener('keyup', this._keyUpHandler, false)
-
-    Object.assign(this, mouseMixin)
-    canvasElement.addEventListener(
-      'mousemove',
-      this._mouseMoveHandler.bind(this),
-      false
-    )
-    canvasElement.addEventListener(
-      'mousedown',
-      this._mouseDownHandler.bind(this),
-      false
-    )
-    canvasElement.addEventListener(
-      'mouseup',
-      this._mouseUpHandler.bind(this),
-      false
-    )
+    this.canvas = canvasElement
+    this.ctx = canvasElement.getContext('2d')
   }
 
-  // user override methods
-  setup = () => {}
-  update = () => {}
-  draw = () => {}
-
-  fillRect = (x, y, width, height) => {
-    this._ctx.fillRect(x, y, width, height)
-  }
-
-  _clearCanvas = () => {
-    this._ctx.clearRect(0, 0, this.canvasWidth, this.canvasHeight)
-  }
-
-  _iterateGraphics = () => {
-    this.update()
-    this._clearCanvas()
-    this.draw()
-  }
-
-  runGraphics = () => {
-    this.setup()
-    setInterval(this._iterateGraphics, 10)
+  clearCanvas() {
+    this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
   }
 }
+
+export function makeGraphicsWindow(canvasElement) {
+  window._graphics = new SimpleWebGraphics(canvasElement)
+}
+
+export function runGraphics(startWorld, updateWorld, drawWorld) {
+  let world = {}
+
+  const iterateGraphics = () => {
+    updateWorld(world)
+    window._graphics.clearCanvas()
+    drawWorld(world)
+  }
+
+  startWorld(world)
+  setInterval(iterateGraphics, 10)
+}
+
+export function fillRectangle(x, y, width, height) {
+  window._graphics.ctx.fillRect(x, y, width, height)
+}
+
+export { isKeyPressed } from './mixins/keyboard'
+

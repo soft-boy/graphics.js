@@ -15,22 +15,31 @@ const keyNameMap = {
   Escape: 'escape',
 }
 
-const keysDown = {}
+export default (superclass) => class extends superclass {
+  constructor(...args) {
+    super(...args)
 
-export const keyboardMixin = {
-  _keyDownHandler(e) {
-    const key = keyNameMap[e.key] || e.key
-    keysDown[key] = true
-  },
-  _keyUpHandler(e) {
-    const key = keyNameMap[e.key] || e.key
-    keysDown[key] = false
-  },
-  isKeyDown(key) {
-    if (!(key in keysDown)) {
-      return false
-    }
+    this.keysDown = {}
 
-    return keysDown[key]
-  },
+    document.addEventListener('keydown', (e) => this.keyDownHandler(e), false)
+    document.addEventListener('keyup', (e) => this.keyUpHandler(e), false)
+  }
+
+  keyDownHandler(e) {
+    const key = keyNameMap[e.key] || e.key
+    this.keysDown[key] = true
+  }
+
+  keyUpHandler(e) {
+    const key = keyNameMap[e.key] || e.key
+    this.keysDown[key] = false
+  }
+}
+
+export function isKeyPressed(key) {
+  if (!(key in window._graphics.keysDown)) {
+    return false
+  }
+
+  return window._graphics.keysDown[key]
 }
