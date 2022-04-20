@@ -62,12 +62,8 @@ var _default = function _default(superclass) {
 
       _this = _super.call.apply(_super, [this].concat(args));
       _this.keysDown = {};
-      document.addEventListener('keydown', function (e) {
-        return _this.keyDownHandler(e);
-      }, false);
-      document.addEventListener('keyup', function (e) {
-        return _this.keyUpHandler(e);
-      }, false);
+      document.addEventListener('keydown', _this.keyDownHandler.bind(_assertThisInitialized(_this)), false);
+      document.addEventListener('keyup', _this.keyUpHandler.bind(_assertThisInitialized(_this)), false);
       return _this;
     }
 

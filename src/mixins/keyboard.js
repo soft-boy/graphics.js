@@ -21,8 +21,8 @@ export default (superclass) => class extends superclass {
 
     this.keysDown = {}
 
-    document.addEventListener('keydown', (e) => this.keyDownHandler(e), false)
-    document.addEventListener('keyup', (e) => this.keyUpHandler(e), false)
+    document.addEventListener('keydown', this.keyDownHandler.bind(this), false)
+    document.addEventListener('keyup', this.keyUpHandler.bind(this), false)
   }
 
   keyDownHandler(e) {
