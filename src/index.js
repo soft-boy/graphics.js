@@ -35,12 +35,17 @@ export function runGraphics(startWorld, updateWorld, drawWorld) {
 }
 
 export { 
+  drawPixel,
+  drawLine,
   drawCircle,
   fillCircle,
   drawEllipse,
   fillEllipse,
   drawRectangle,
-  fillRectangle
+  fillRectangle,
+  drawPolygon,
+  fillPolygon,
+  drawString
  } from './mixins/draw'
 
  export { isKeyPressed } from './mixins/keyboard'

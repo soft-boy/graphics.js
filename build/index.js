@@ -17,10 +17,34 @@ Object.defineProperty(exports, "drawEllipse", {
     return _draw.drawEllipse;
   }
 });
+Object.defineProperty(exports, "drawLine", {
+  enumerable: true,
+  get: function get() {
+    return _draw.drawLine;
+  }
+});
+Object.defineProperty(exports, "drawPixel", {
+  enumerable: true,
+  get: function get() {
+    return _draw.drawPixel;
+  }
+});
+Object.defineProperty(exports, "drawPolygon", {
+  enumerable: true,
+  get: function get() {
+    return _draw.drawPolygon;
+  }
+});
 Object.defineProperty(exports, "drawRectangle", {
   enumerable: true,
   get: function get() {
     return _draw.drawRectangle;
+  }
+});
+Object.defineProperty(exports, "drawString", {
+  enumerable: true,
+  get: function get() {
+    return _draw.drawString;
   }
 });
 Object.defineProperty(exports, "fillCircle", {
@@ -33,6 +57,12 @@ Object.defineProperty(exports, "fillEllipse", {
   enumerable: true,
   get: function get() {
     return _draw.fillEllipse;
+  }
+});
+Object.defineProperty(exports, "fillPolygon", {
+  enumerable: true,
+  get: function get() {
+    return _draw.fillPolygon;
   }
 });
 Object.defineProperty(exports, "fillRectangle", {
