@@ -5,12 +5,60 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.drawCircle = drawCircle;
-exports.drawEllipse = drawEllipse;
-exports.drawRectangle = drawRectangle;
-exports.fillCircle = fillCircle;
-exports.fillEllipse = fillEllipse;
-exports.fillRectangle = fillRectangle;
+Object.defineProperty(exports, "drawCircle", {
+  enumerable: true,
+  get: function get() {
+    return _draw.drawCircle;
+  }
+});
+Object.defineProperty(exports, "drawEllipse", {
+  enumerable: true,
+  get: function get() {
+    return _draw.drawEllipse;
+  }
+});
+Object.defineProperty(exports, "drawRectangle", {
+  enumerable: true,
+  get: function get() {
+    return _draw.drawRectangle;
+  }
+});
+Object.defineProperty(exports, "fillCircle", {
+  enumerable: true,
+  get: function get() {
+    return _draw.fillCircle;
+  }
+});
+Object.defineProperty(exports, "fillEllipse", {
+  enumerable: true,
+  get: function get() {
+    return _draw.fillEllipse;
+  }
+});
+Object.defineProperty(exports, "fillRectangle", {
+  enumerable: true,
+  get: function get() {
+    return _draw.fillRectangle;
+  }
+});
+Object.defineProperty(exports, "getScreenSize", {
+  enumerable: true,
+  get: function get() {
+    return _misc.getScreenSize;
+  }
+});
+Object.defineProperty(exports, "getWindowHeight", {
+  enumerable: true,
+  get: function get() {
+    return _misc.getWindowHeight;
+  }
+});
+Object.defineProperty(exports, "getWindowWidth", {
+  enumerable: true,
+  get: function get() {
+    return _misc.getWindowWidth;
+  }
+});
 Object.defineProperty(exports, "isKeyPressed", {
   enumerable: true,
   get: function get() {
@@ -23,6 +71,10 @@ exports.runGraphics = runGraphics;
 var _keyboard = _interopRequireWildcard(require("./mixins/keyboard"));
 
 var _mouse = _interopRequireDefault(require("./mixins/mouse"));
+
+var _draw = require("./mixins/draw");
+
+var _misc = require("./mixins/misc");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
@@ -99,69 +151,4 @@ function runGraphics(startWorld, updateWorld, drawWorld) {
 
   startWorld(world);
   setInterval(iterateGraphics, 10);
-}
-
-function drawCircle(x, y, radius) {
-  var color = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "black";
-  var thickness = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 1;
-  window._graphics.ctx.strokeStyle = color;
-  window._graphics.ctx.lineWidth = thickness;
-
-  window._graphics.ctx.beginPath();
-
-  window._graphics.ctx.ellipse(x, y, radius, radius, 0, 0, 2 * Math.PI);
-
-  window._graphics.ctx.stroke();
-}
-
-function fillCircle(x, y, radius) {
-  var color = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : "black";
-  window._graphics.ctx.fillStyle = color;
-
-  window._graphics.ctx.beginPath();
-
-  window._graphics.ctx.ellipse(x, y, radius, radius, 0, 0, 2 * Math.PI);
-
-  window._graphics.ctx.fill();
-}
-
-function drawEllipse(x, y, width, height) {
-  var color = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "black";
-  var thickness = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 1;
-  window._graphics.ctx.strokeStyle = color;
-  window._graphics.ctx.lineWidth = thickness;
-
-  window._graphics.ctx.beginPath();
-
-  window._graphics.ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
-
-  window._graphics.ctx.stroke();
-}
-
-function fillEllipse(x, y, width, height) {
-  var color = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "black";
-  window._graphics.ctx.fillStyle = color;
-
-  window._graphics.ctx.beginPath();
-
-  window._graphics.ctx.ellipse(x, y, width / 2, height / 2, 0, 0, 2 * Math.PI);
-
-  window._graphics.ctx.fill();
-}
-
-function drawRectangle(x, y, width, height) {
-  var color = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "black";
-  var thickness = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : 1;
-  window._graphics.ctx.strokeStyle = color;
-  window._graphics.ctx.lineWidth = thickness;
-  console.log(color, thickness);
-
-  window._graphics.ctx.strokeRect(x, y, width, height);
-}
-
-function fillRectangle(x, y, width, height) {
-  var color = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "black";
-  window._graphics.ctx.fillStyle = color;
-
-  window._graphics.ctx.fillRect(x, y, width, height);
 }
