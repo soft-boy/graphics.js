@@ -25,6 +25,10 @@ export function runGraphics(startWorld, updateWorld, drawWorld) {
   window.world = {}
 
   const iterateGraphics = () => {
+    if (window.end) {
+      window._graphics.clearCanvas()
+      return
+    }
     updateWorld(window.world)
     window._graphics.clearCanvas()
     drawWorld(window.world)
@@ -34,6 +38,10 @@ export function runGraphics(startWorld, updateWorld, drawWorld) {
 
   window.world = startWorld(window.world)
   iterateGraphics()
+}
+
+export function endGraphics() {
+  window.end = true
 }
 
 export { 

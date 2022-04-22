@@ -47,6 +47,7 @@ Object.defineProperty(exports, "drawString", {
     return _draw.drawString;
   }
 });
+exports.endGraphics = endGraphics;
 Object.defineProperty(exports, "fillCircle", {
   enumerable: true,
   get: function get() {
@@ -208,6 +209,12 @@ function runGraphics(startWorld, updateWorld, drawWorld) {
   window.world = {};
 
   var iterateGraphics = function iterateGraphics() {
+    if (window.end) {
+      window._graphics.clearCanvas();
+
+      return;
+    }
+
     updateWorld(window.world);
 
     window._graphics.clearCanvas();
@@ -218,4 +225,8 @@ function runGraphics(startWorld, updateWorld, drawWorld) {
 
   window.world = startWorld(window.world);
   iterateGraphics();
+}
+
+function endGraphics() {
+  window.end = true;
 }
