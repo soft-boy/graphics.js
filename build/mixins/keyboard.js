@@ -7,6 +7,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports["default"] = void 0;
 exports.isKeyPressed = isKeyPressed;
+exports.onAnyKeyPress = onAnyKeyPress;
+exports.onAnyKeyRelease = onAnyKeyRelease;
+exports.onKeyPress = onKeyPress;
+exports.onKeyRelease = onKeyRelease;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -62,6 +66,12 @@ var _default = function _default(superclass) {
 
       _this = _super.call.apply(_super, [this].concat(args));
       _this.keysDown = {};
+      _this.keyPressHandlers = {
+        any: []
+      };
+      _this.keyReleaseHandler = {
+        any: []
+      };
       document.addEventListener('keydown', _this.keyDownHandler.bind(_assertThisInitialized(_this)), false);
       document.addEventListener('keyup', _this.keyUpHandler.bind(_assertThisInitialized(_this)), false);
       return _this;
@@ -70,14 +80,31 @@ var _default = function _default(superclass) {
     _createClass(_class, [{
       key: "keyDownHandler",
       value: function keyDownHandler(e) {
+        var _this$keyPressHandler;
+
         var key = keyNameMap[e.key] || e.key;
+        if (this.keysDown[key]) return;
         this.keysDown[key] = true;
+        this.keyPressHandlers['any'].forEach(function (func) {
+          return func(window.world);
+        });
+        (_this$keyPressHandler = this.keyPressHandlers[key]) === null || _this$keyPressHandler === void 0 ? void 0 : _this$keyPressHandler.forEach(function (func) {
+          return func(window.world, key);
+        });
       }
     }, {
       key: "keyUpHandler",
       value: function keyUpHandler(e) {
+        var _this$keyReleaseHandl;
+
         var key = keyNameMap[e.key] || e.key;
         this.keysDown[key] = false;
+        this.keyReleaseHandler['any'].forEach(function (func) {
+          return func(window.world);
+        });
+        (_this$keyReleaseHandl = this.keyReleaseHandler[key]) === null || _this$keyReleaseHandl === void 0 ? void 0 : _this$keyReleaseHandl.forEach(function (func) {
+          return func(window.world, key);
+        });
       }
     }]);
 
@@ -93,4 +120,28 @@ function isKeyPressed(key) {
   }
 
   return window._graphics.keysDown[key];
+}
+
+function onKeyPress(listenerFunction, key) {
+  if (window._graphics.keyPressHandlers[key]) {
+    window._graphics.keyPressHandlers[key].push(listenerFunction);
+  } else {
+    window._graphics.keyPressHandlers[key] = [listenerFunction];
+  }
+}
+
+function onAnyKeyPress(listenerFunction) {
+  window._graphics.keyPressHandlers['any'].push(listenerFunction);
+}
+
+function onKeyRelease(listenerFunction, key) {
+  if (window._graphics.keyReleaseHandler[key]) {
+    window._graphics.keyReleaseHandler[key].push(listenerFunction);
+  } else {
+    window._graphics.keyReleaseHandler[key] = [listenerFunction];
+  }
+}
+
+function onAnyKeyRelease(listenerFunction) {
+  window._graphics.keyReleaseHandler['any'].push(listenerFunction);
 }

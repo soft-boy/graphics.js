@@ -96,6 +96,30 @@ Object.defineProperty(exports, "isKeyPressed", {
   }
 });
 exports.makeGraphicsWindow = makeGraphicsWindow;
+Object.defineProperty(exports, "onAnyKeyPress", {
+  enumerable: true,
+  get: function get() {
+    return _keyboard.onAnyKeyPress;
+  }
+});
+Object.defineProperty(exports, "onAnyKeyRelease", {
+  enumerable: true,
+  get: function get() {
+    return _keyboard.onAnyKeyRelease;
+  }
+});
+Object.defineProperty(exports, "onKeyPress", {
+  enumerable: true,
+  get: function get() {
+    return _keyboard.onKeyPress;
+  }
+});
+Object.defineProperty(exports, "onKeyRelease", {
+  enumerable: true,
+  get: function get() {
+    return _keyboard.onKeyRelease;
+  }
+});
 exports.runGraphics = runGraphics;
 
 var _keyboard = _interopRequireWildcard(require("./mixins/keyboard"));
@@ -169,17 +193,17 @@ function makeGraphicsWindow(canvasElement) {
 }
 
 function runGraphics(startWorld, updateWorld, drawWorld) {
-  var world = {};
+  window.world = {};
 
   var iterateGraphics = function iterateGraphics() {
-    updateWorld(world);
+    updateWorld(window.world);
 
     window._graphics.clearCanvas();
 
-    drawWorld(world);
+    drawWorld(window.world);
     window.requestAnimationFrame(iterateGraphics);
   };
 
-  world = startWorld(world);
+  window.world = startWorld(window.world);
   iterateGraphics();
 }

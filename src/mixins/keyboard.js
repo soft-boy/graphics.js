@@ -20,6 +20,8 @@ export default (superclass) => class extends superclass {
     super(...args)
 
     this.keysDown = {}
+    this.keyPressHandlers = { any: [] }
+    this.keyReleaseHandler = { any: [] }
 
     document.addEventListener('keydown', this.keyDownHandler.bind(this), false)
     document.addEventListener('keyup', this.keyUpHandler.bind(this), false)
@@ -27,12 +29,19 @@ export default (superclass) => class extends superclass {
 
   keyDownHandler(e) {
     const key = keyNameMap[e.key] || e.key
+    if (this.keysDown[key]) return
     this.keysDown[key] = true
+
+    this.keyPressHandlers['any'].forEach(func => func(window.world))
+    this.keyPressHandlers[key]?.forEach(func => func(window.world, key))
   }
 
   keyUpHandler(e) {
     const key = keyNameMap[e.key] || e.key
     this.keysDown[key] = false
+
+    this.keyReleaseHandler['any'].forEach(func => func(window.world))
+    this.keyReleaseHandler[key]?.forEach(func => func(window.world, key))
   }
 }
 
@@ -42,4 +51,30 @@ export function isKeyPressed(key) {
   }
 
   return window._graphics.keysDown[key]
+}
+
+export function onKeyPress(listenerFunction, key) {
+  if (window._graphics.keyPressHandlers[key]) {
+    window._graphics.keyPressHandlers[key].push(listenerFunction)
+  }
+  else {
+    window._graphics.keyPressHandlers[key] = [listenerFunction]
+  }
+}
+
+export function onAnyKeyPress(listenerFunction) {
+  window._graphics.keyPressHandlers['any'].push(listenerFunction)
+}
+
+export function onKeyRelease(listenerFunction, key) {
+  if (window._graphics.keyReleaseHandler[key]) {
+    window._graphics.keyReleaseHandler[key].push(listenerFunction)
+  }
+  else {
+    window._graphics.keyReleaseHandler[key] = [listenerFunction]
+  }
+}
+
+export function onAnyKeyRelease(listenerFunction) {
+  window._graphics.keyReleaseHandler['any'].push(listenerFunction)
 }

@@ -22,17 +22,17 @@ export function makeGraphicsWindow(canvasElement) {
 }
 
 export function runGraphics(startWorld, updateWorld, drawWorld) {
-  let world = {}
+  window.world = {}
 
   const iterateGraphics = () => {
-    updateWorld(world)
+    updateWorld(window.world)
     window._graphics.clearCanvas()
-    drawWorld(world)
+    drawWorld(window.world)
 
     window.requestAnimationFrame(iterateGraphics)
   }
 
-  world = startWorld(world)
+  window.world = startWorld(window.world)
   iterateGraphics()
 }
 
@@ -48,12 +48,18 @@ export {
   drawPolygon,
   fillPolygon,
   drawString
- } from './mixins/draw'
+} from './mixins/draw'
 
- export { isKeyPressed } from './mixins/keyboard'
+export {
+  isKeyPressed,
+  onKeyPress,
+  onAnyKeyPress,
+  onKeyRelease,
+  onAnyKeyRelease
+} from './mixins/keyboard'
 
- export { 
+export { 
   getWindowWidth,
   getWindowHeight,
   getScreenSize,
- } from './mixins/misc'
+} from './mixins/misc'
