@@ -177,8 +177,9 @@ function runGraphics(startWorld, updateWorld, drawWorld) {
     window._graphics.clearCanvas();
 
     drawWorld(world);
+    window.requestAnimationFrame(iterateGraphics);
   };
 
-  startWorld(world);
-  setInterval(iterateGraphics, 10);
+  world = startWorld(world);
+  iterateGraphics();
 }
