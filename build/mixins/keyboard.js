@@ -6,11 +6,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports["default"] = void 0;
+exports.getKeyName = getKeyName;
 exports.isKeyPressed = isKeyPressed;
 exports.onAnyKeyPress = onAnyKeyPress;
 exports.onAnyKeyRelease = onAnyKeyRelease;
 exports.onKeyPress = onKeyPress;
 exports.onKeyRelease = onKeyRelease;
+exports.sameKeys = sameKeys;
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -144,4 +146,12 @@ function onKeyRelease(listenerFunction, key) {
 
 function onAnyKeyRelease(listenerFunction) {
   window._graphics.keyReleaseHandler['any'].push(listenerFunction);
+}
+
+function sameKeys(key1, key2) {
+  return key1 === key2 || keyNameMap[key1] === key2 || key1 === keyNameMap[key2];
+}
+
+function getKeyName(key) {
+  return keyNameMap[key] || key;
 }

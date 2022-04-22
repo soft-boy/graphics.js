@@ -55,7 +55,9 @@ export {
   onKeyPress,
   onAnyKeyPress,
   onKeyRelease,
-  onAnyKeyRelease
+  onAnyKeyRelease,
+  sameKeys,
+  getKeyName
 } from './mixins/keyboard'
 
 export { 

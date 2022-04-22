@@ -71,6 +71,12 @@ Object.defineProperty(exports, "fillRectangle", {
     return _draw.fillRectangle;
   }
 });
+Object.defineProperty(exports, "getKeyName", {
+  enumerable: true,
+  get: function get() {
+    return _keyboard.getKeyName;
+  }
+});
 Object.defineProperty(exports, "getScreenSize", {
   enumerable: true,
   get: function get() {
@@ -121,6 +127,12 @@ Object.defineProperty(exports, "onKeyRelease", {
   }
 });
 exports.runGraphics = runGraphics;
+Object.defineProperty(exports, "sameKeys", {
+  enumerable: true,
+  get: function get() {
+    return _keyboard.sameKeys;
+  }
+});
 
 var _keyboard = _interopRequireWildcard(require("./mixins/keyboard"));
 

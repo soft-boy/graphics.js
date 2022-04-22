@@ -78,3 +78,11 @@ export function onKeyRelease(listenerFunction, key) {
 export function onAnyKeyRelease(listenerFunction) {
   window._graphics.keyReleaseHandler['any'].push(listenerFunction)
 }
+
+export function sameKeys(key1, key2) {
+  return key1 === key2 || keyNameMap[key1] === key2 || key1 === keyNameMap[key2]
+}
+
+export function getKeyName(key) {
+  return keyNameMap[key] || key
+}
