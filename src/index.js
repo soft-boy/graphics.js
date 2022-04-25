@@ -59,6 +59,19 @@ export {
 } from './mixins/draw'
 
 export {
+  getMousePosition,
+  getMouseButton,
+  onMousePress,
+  onMouseRelease,
+  onWheelForward,
+  onWheelBackward,
+  onMouseMotion,
+  hideMouse,
+  showMouse,
+  moveMouse
+} from './mixins/mouse'
+
+export {
   isKeyPressed,
   onKeyPress,
   onAnyKeyPress,

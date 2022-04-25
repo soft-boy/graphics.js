@@ -78,6 +78,18 @@ Object.defineProperty(exports, "getKeyName", {
     return _keyboard.getKeyName;
   }
 });
+Object.defineProperty(exports, "getMouseButton", {
+  enumerable: true,
+  get: function get() {
+    return _mouse.getMouseButton;
+  }
+});
+Object.defineProperty(exports, "getMousePosition", {
+  enumerable: true,
+  get: function get() {
+    return _mouse.getMousePosition;
+  }
+});
 Object.defineProperty(exports, "getScreenSize", {
   enumerable: true,
   get: function get() {
@@ -96,6 +108,12 @@ Object.defineProperty(exports, "getWindowWidth", {
     return _misc.getWindowWidth;
   }
 });
+Object.defineProperty(exports, "hideMouse", {
+  enumerable: true,
+  get: function get() {
+    return _mouse.hideMouse;
+  }
+});
 Object.defineProperty(exports, "isKeyPressed", {
   enumerable: true,
   get: function get() {
@@ -103,6 +121,12 @@ Object.defineProperty(exports, "isKeyPressed", {
   }
 });
 exports.makeGraphicsWindow = makeGraphicsWindow;
+Object.defineProperty(exports, "moveMouse", {
+  enumerable: true,
+  get: function get() {
+    return _mouse.moveMouse;
+  }
+});
 Object.defineProperty(exports, "onAnyKeyPress", {
   enumerable: true,
   get: function get() {
@@ -127,6 +151,36 @@ Object.defineProperty(exports, "onKeyRelease", {
     return _keyboard.onKeyRelease;
   }
 });
+Object.defineProperty(exports, "onMouseMotion", {
+  enumerable: true,
+  get: function get() {
+    return _mouse.onMouseMotion;
+  }
+});
+Object.defineProperty(exports, "onMousePress", {
+  enumerable: true,
+  get: function get() {
+    return _mouse.onMousePress;
+  }
+});
+Object.defineProperty(exports, "onMouseRelease", {
+  enumerable: true,
+  get: function get() {
+    return _mouse.onMouseRelease;
+  }
+});
+Object.defineProperty(exports, "onWheelBackward", {
+  enumerable: true,
+  get: function get() {
+    return _mouse.onWheelBackward;
+  }
+});
+Object.defineProperty(exports, "onWheelForward", {
+  enumerable: true,
+  get: function get() {
+    return _mouse.onWheelForward;
+  }
+});
 exports.runGraphics = runGraphics;
 Object.defineProperty(exports, "sameKeys", {
   enumerable: true,
@@ -134,16 +188,20 @@ Object.defineProperty(exports, "sameKeys", {
     return _keyboard.sameKeys;
   }
 });
+Object.defineProperty(exports, "showMouse", {
+  enumerable: true,
+  get: function get() {
+    return _mouse.showMouse;
+  }
+});
 
 var _keyboard = _interopRequireWildcard(require("./mixins/keyboard"));
 
-var _mouse = _interopRequireDefault(require("./mixins/mouse"));
+var _mouse = _interopRequireWildcard(require("./mixins/mouse"));
 
 var _draw = require("./mixins/draw");
 
 var _misc = require("./mixins/misc");
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
