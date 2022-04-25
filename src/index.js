@@ -82,6 +82,12 @@ export {
 } from './mixins/keyboard'
 
 export { 
+  convertToComponents,
+  convertToAngle,
+  pointInPolygon,
+} from './mixins/math'
+
+export { 
   getWindowWidth,
   getWindowHeight,
   getScreenSize,

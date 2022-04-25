@@ -5,6 +5,18 @@ function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" =
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+Object.defineProperty(exports, "convertToAngle", {
+  enumerable: true,
+  get: function get() {
+    return _math.convertToAngle;
+  }
+});
+Object.defineProperty(exports, "convertToComponents", {
+  enumerable: true,
+  get: function get() {
+    return _math.convertToComponents;
+  }
+});
 Object.defineProperty(exports, "drawCircle", {
   enumerable: true,
   get: function get() {
@@ -181,6 +193,12 @@ Object.defineProperty(exports, "onWheelForward", {
     return _mouse.onWheelForward;
   }
 });
+Object.defineProperty(exports, "pointInPolygon", {
+  enumerable: true,
+  get: function get() {
+    return _math.pointInPolygon;
+  }
+});
 exports.runGraphics = runGraphics;
 Object.defineProperty(exports, "sameKeys", {
   enumerable: true,
@@ -200,6 +218,8 @@ var _keyboard = _interopRequireWildcard(require("./mixins/keyboard"));
 var _mouse = _interopRequireWildcard(require("./mixins/mouse"));
 
 var _draw = require("./mixins/draw");
+
+var _math = require("./mixins/math");
 
 var _misc = require("./mixins/misc");
 
