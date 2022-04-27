@@ -29,6 +29,12 @@ Object.defineProperty(exports, "drawEllipse", {
     return _draw.drawEllipse;
   }
 });
+Object.defineProperty(exports, "drawImage", {
+  enumerable: true,
+  get: function get() {
+    return _image.drawImage;
+  }
+});
 Object.defineProperty(exports, "drawLine", {
   enumerable: true,
   get: function get() {
@@ -84,6 +90,18 @@ Object.defineProperty(exports, "fillRectangle", {
     return _draw.fillRectangle;
   }
 });
+Object.defineProperty(exports, "getImageHeight", {
+  enumerable: true,
+  get: function get() {
+    return _image.getImageHeight;
+  }
+});
+Object.defineProperty(exports, "getImageWidth", {
+  enumerable: true,
+  get: function get() {
+    return _image.getImageWidth;
+  }
+});
 Object.defineProperty(exports, "getKeyName", {
   enumerable: true,
   get: function get() {
@@ -130,6 +148,12 @@ Object.defineProperty(exports, "isKeyPressed", {
   enumerable: true,
   get: function get() {
     return _keyboard.isKeyPressed;
+  }
+});
+Object.defineProperty(exports, "loadImage", {
+  enumerable: true,
+  get: function get() {
+    return _image.loadImage;
   }
 });
 exports.makeGraphicsWindow = makeGraphicsWindow;
@@ -219,6 +243,8 @@ var _mouse = _interopRequireWildcard(require("./mixins/mouse"));
 
 var _draw = require("./mixins/draw");
 
+var _image = require("./mixins/image");
+
 var _math = require("./mixins/math");
 
 var _misc = require("./mixins/misc");
@@ -293,12 +319,12 @@ function runGraphics(startWorld, updateWorld, drawWorld) {
       return;
     }
 
+    window.requestAnimationFrame(iterateGraphics);
     updateWorld(window.world);
 
     window._graphics.clearCanvas();
 
     drawWorld(window.world);
-    window.requestAnimationFrame(iterateGraphics);
   };
 
   window.world = startWorld(window.world);

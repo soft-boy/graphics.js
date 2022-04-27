@@ -29,11 +29,10 @@ export function runGraphics(startWorld, updateWorld, drawWorld) {
       window._graphics.clearCanvas()
       return
     }
+    window.requestAnimationFrame(iterateGraphics)
     updateWorld(window.world)
     window._graphics.clearCanvas()
     drawWorld(window.world)
-
-    window.requestAnimationFrame(iterateGraphics)
   }
 
   window.world = startWorld(window.world)
@@ -57,6 +56,13 @@ export {
   fillPolygon,
   drawString
 } from './mixins/draw'
+
+export {
+  loadImage,
+  drawImage,
+  getImageWidth,
+  getImageHeight
+} from './mixins/image'
 
 export {
   getMousePosition,
