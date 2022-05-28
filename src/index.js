@@ -21,7 +21,7 @@ export function makeGraphicsWindow(canvasElement) {
   window._graphics = new SimpleWebGraphics(canvasElement)
 }
 
-export function runGraphics(startWorld, updateWorld, drawWorld) {
+export async function runGraphics(startWorld, updateWorld, drawWorld) {
   window.world = {}
 
   const iterateGraphics = () => {
@@ -35,7 +35,7 @@ export function runGraphics(startWorld, updateWorld, drawWorld) {
     drawWorld(window.world)
   }
 
-  window.world = startWorld(window.world)
+  window.world = await startWorld(window.world)
   iterateGraphics()
 }
 
@@ -63,6 +63,15 @@ export {
   getImageWidth,
   getImageHeight
 } from './mixins/image'
+
+export {
+  loadSound,
+  playSound,
+  stopSound,
+  loadMusic,
+  playMusic,
+  stopMusic
+} from './mixins/sound'
 
 export {
   getMousePosition,

@@ -1,7 +1,7 @@
 const xor = (a, b) => (a || b && !(a && b))
 
 // TODO: make work with filename not file, transparentColor
-export function loadImage(file, transparentColor=null, rotate=0, scale=1, flipHorizontal=false, flipVertical=false) {
+export async function loadImage(file, transparentColor=null, rotate=0, scale=1, flipHorizontal=false, flipVertical=false) {
   let image = new Image();
   image.src = file
   image.width *= scale
@@ -10,7 +10,11 @@ export function loadImage(file, transparentColor=null, rotate=0, scale=1, flipHo
   image.flipHorizontal = flipHorizontal
   image.flipVertical = flipVertical
 
-  return image
+  return new Promise((resolve, reject) => {
+    image.onload = () => {
+      resolve(image)
+    }
+  })
 }
 
 export function drawImage(image, x, y, rotate=0, scale=1, flipHorizontal=false, flipVertical=false) {

@@ -8,25 +8,58 @@ exports.getImageHeight = getImageHeight;
 exports.getImageWidth = getImageWidth;
 exports.loadImage = loadImage;
 
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
 var xor = function xor(a, b) {
   return a || b && !(a && b);
 }; // TODO: make work with filename not file, transparentColor
 
 
-function loadImage(file) {
-  var transparentColor = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : null;
-  var rotate = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
-  var scale = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : 1;
-  var flipHorizontal = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : false;
-  var flipVertical = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
-  var image = new Image();
-  image.src = file;
-  image.width *= scale;
-  image.height *= scale;
-  image.rotate = rotate;
-  image.flipHorizontal = flipHorizontal;
-  image.flipVertical = flipVertical;
-  return image;
+function loadImage(_x) {
+  return _loadImage.apply(this, arguments);
+}
+
+function _loadImage() {
+  _loadImage = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(file) {
+    var transparentColor,
+        rotate,
+        scale,
+        flipHorizontal,
+        flipVertical,
+        image,
+        _args = arguments;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            transparentColor = _args.length > 1 && _args[1] !== undefined ? _args[1] : null;
+            rotate = _args.length > 2 && _args[2] !== undefined ? _args[2] : 0;
+            scale = _args.length > 3 && _args[3] !== undefined ? _args[3] : 1;
+            flipHorizontal = _args.length > 4 && _args[4] !== undefined ? _args[4] : false;
+            flipVertical = _args.length > 5 && _args[5] !== undefined ? _args[5] : false;
+            image = new Image();
+            image.src = file;
+            image.width *= scale;
+            image.height *= scale;
+            image.rotate = rotate;
+            image.flipHorizontal = flipHorizontal;
+            image.flipVertical = flipVertical;
+            return _context.abrupt("return", new Promise(function (resolve, reject) {
+              image.onload = function () {
+                resolve(image);
+              };
+            }));
+
+          case 13:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _loadImage.apply(this, arguments);
 }
 
 function drawImage(image, x, y) {

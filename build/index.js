@@ -156,6 +156,18 @@ Object.defineProperty(exports, "loadImage", {
     return _image.loadImage;
   }
 });
+Object.defineProperty(exports, "loadMusic", {
+  enumerable: true,
+  get: function get() {
+    return _sound.loadMusic;
+  }
+});
+Object.defineProperty(exports, "loadSound", {
+  enumerable: true,
+  get: function get() {
+    return _sound.loadSound;
+  }
+});
 exports.makeGraphicsWindow = makeGraphicsWindow;
 Object.defineProperty(exports, "moveMouse", {
   enumerable: true,
@@ -217,6 +229,18 @@ Object.defineProperty(exports, "onWheelForward", {
     return _mouse.onWheelForward;
   }
 });
+Object.defineProperty(exports, "playMusic", {
+  enumerable: true,
+  get: function get() {
+    return _sound.playMusic;
+  }
+});
+Object.defineProperty(exports, "playSound", {
+  enumerable: true,
+  get: function get() {
+    return _sound.playSound;
+  }
+});
 Object.defineProperty(exports, "pointInPolygon", {
   enumerable: true,
   get: function get() {
@@ -236,6 +260,18 @@ Object.defineProperty(exports, "showMouse", {
     return _mouse.showMouse;
   }
 });
+Object.defineProperty(exports, "stopMusic", {
+  enumerable: true,
+  get: function get() {
+    return _sound.stopMusic;
+  }
+});
+Object.defineProperty(exports, "stopSound", {
+  enumerable: true,
+  get: function get() {
+    return _sound.stopSound;
+  }
+});
 
 var _keyboard = _interopRequireWildcard(require("./mixins/keyboard"));
 
@@ -245,6 +281,8 @@ var _draw = require("./mixins/draw");
 
 var _image = require("./mixins/image");
 
+var _sound = require("./mixins/sound");
+
 var _math = require("./mixins/math");
 
 var _misc = require("./mixins/misc");
@@ -252,6 +290,10 @@ var _misc = require("./mixins/misc");
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
 function _interopRequireWildcard(obj, nodeInterop) { if (!nodeInterop && obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(nodeInterop); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (key !== "default" && Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); Object.defineProperty(subClass, "prototype", { writable: false }); if (superClass) _setPrototypeOf(subClass, superClass); }
 
@@ -309,26 +351,49 @@ function makeGraphicsWindow(canvasElement) {
   window._graphics = new SimpleWebGraphics(canvasElement);
 }
 
-function runGraphics(startWorld, updateWorld, drawWorld) {
-  window.world = {};
+function runGraphics(_x, _x2, _x3) {
+  return _runGraphics.apply(this, arguments);
+}
 
-  var iterateGraphics = function iterateGraphics() {
-    if (window.end) {
-      window._graphics.clearCanvas();
+function _runGraphics() {
+  _runGraphics = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(startWorld, updateWorld, drawWorld) {
+    var iterateGraphics;
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+      while (1) {
+        switch (_context.prev = _context.next) {
+          case 0:
+            window.world = {};
 
-      return;
-    }
+            iterateGraphics = function iterateGraphics() {
+              if (window.end) {
+                window._graphics.clearCanvas();
 
-    window.requestAnimationFrame(iterateGraphics);
-    updateWorld(window.world);
+                return;
+              }
 
-    window._graphics.clearCanvas();
+              window.requestAnimationFrame(iterateGraphics);
+              updateWorld(window.world);
 
-    drawWorld(window.world);
-  };
+              window._graphics.clearCanvas();
 
-  window.world = startWorld(window.world);
-  iterateGraphics();
+              drawWorld(window.world);
+            };
+
+            _context.next = 4;
+            return startWorld(window.world);
+
+          case 4:
+            window.world = _context.sent;
+            iterateGraphics();
+
+          case 6:
+          case "end":
+            return _context.stop();
+        }
+      }
+    }, _callee);
+  }));
+  return _runGraphics.apply(this, arguments);
 }
 
 function endGraphics() {
