@@ -23,7 +23,8 @@ function loadSound(_x) {
 function _loadSound() {
   _loadSound = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(file) {
     var volume,
-        reader,
+        sound,
+        buffer,
         _args = arguments;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
@@ -31,16 +32,27 @@ function _loadSound() {
           case 0:
             volume = _args.length > 1 && _args[1] !== undefined ? _args[1] : 1;
             window.soundContext = new AudioContext();
-            reader = new FileReader();
+            _context.next = 4;
+            return fetch(file);
 
-            reader.onload = function (evt) {
-              var decoded = window.soundContext.decodeAudioData(evt.target.result);
-              console.log(decoded);
-            };
+          case 4:
+            sound = _context.sent;
+            _context.next = 7;
+            return sound.arrayBuffer();
 
-            reader.readAsText(new File(file));
+          case 7:
+            sound = _context.sent;
+            _context.next = 10;
+            return window.soundContext.decodeAudioData(sound);
 
-          case 5:
+          case 10:
+            buffer = _context.sent;
+            return _context.abrupt("return", {
+              buffer: buffer,
+              sources: []
+            });
+
+          case 12:
           case "end":
             return _context.stop();
         }
@@ -52,11 +64,18 @@ function _loadSound() {
 
 function playSound(sound) {
   var repeat = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
-  return;
+  var source = window.soundContext.createBufferSource();
+  source.buffer = sound.buffer;
+  source.loop = repeat;
+  source.connect(window.soundContext.destination);
+  source.start(0);
+  sound.sources.push(source);
 }
 
 function stopSound(sound) {
-  return;
+  sound.sources.forEach(function (src) {
+    return src.stop(0);
+  });
 }
 
 function loadMusic(file) {

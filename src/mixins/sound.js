@@ -4,20 +4,28 @@ window.AudioContext = window.AudioContext || window.webkitAudioContext;
 export async function loadSound(file, volume=1) {
   window.soundContext = new AudioContext();
 
-  const reader = new FileReader();
-  reader.onload = function(evt) {
-    const decoded = window.soundContext.decodeAudioData(evt.target.result);
-    console.log(decoded)
-  };
-  reader.readAsText(new File(file));
+  let sound = await fetch(file)
+  sound = await sound.arrayBuffer()
+
+  const buffer = await window.soundContext.decodeAudioData(sound)
+  return {
+    buffer,
+    sources: []
+  }
 }
 
 export function playSound(sound, repeat=false) {
-  return
+  const source = window.soundContext.createBufferSource();
+  source.buffer = sound.buffer;
+  source.loop = repeat;
+  source.connect(window.soundContext.destination);
+  source.start(0);
+
+  sound.sources.push(source)
 }
 
 export function stopSound(sound) {
-  return
+  sound.sources.forEach((src) => src.stop(0))
 }
 
 export function loadMusic(file, volume=1) {
