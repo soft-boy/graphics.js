@@ -17,6 +17,12 @@ Object.defineProperty(exports, "convertToComponents", {
     return _math.convertToComponents;
   }
 });
+Object.defineProperty(exports, "displayFPS", {
+  enumerable: true,
+  get: function get() {
+    return _time.displayFPS;
+  }
+});
 Object.defineProperty(exports, "drawCircle", {
   enumerable: true,
   get: function get() {
@@ -88,6 +94,18 @@ Object.defineProperty(exports, "fillRectangle", {
   enumerable: true,
   get: function get() {
     return _draw.fillRectangle;
+  }
+});
+Object.defineProperty(exports, "getActualFrameRate", {
+  enumerable: true,
+  get: function get() {
+    return _time.getActualFrameRate;
+  }
+});
+Object.defineProperty(exports, "getElapsedTime", {
+  enumerable: true,
+  get: function get() {
+    return _time.getElapsedTime;
   }
 });
 Object.defineProperty(exports, "getImageHeight", {
@@ -217,6 +235,12 @@ Object.defineProperty(exports, "onMouseRelease", {
     return _mouse.onMouseRelease;
   }
 });
+Object.defineProperty(exports, "onTimer", {
+  enumerable: true,
+  get: function get() {
+    return _time.onTimer;
+  }
+});
 Object.defineProperty(exports, "onWheelBackward", {
   enumerable: true,
   get: function get() {
@@ -247,11 +271,23 @@ Object.defineProperty(exports, "pointInPolygon", {
     return _math.pointInPolygon;
   }
 });
+Object.defineProperty(exports, "resetTime", {
+  enumerable: true,
+  get: function get() {
+    return _time.resetTime;
+  }
+});
 exports.runGraphics = runGraphics;
 Object.defineProperty(exports, "sameKeys", {
   enumerable: true,
   get: function get() {
     return _keyboard.sameKeys;
+  }
+});
+Object.defineProperty(exports, "setFrameRate", {
+  enumerable: true,
+  get: function get() {
+    return _time.setFrameRate;
   }
 });
 Object.defineProperty(exports, "showMouse", {
@@ -273,15 +309,17 @@ Object.defineProperty(exports, "stopSound", {
   }
 });
 
+var _draw = require("./mixins/draw");
+
 var _keyboard = _interopRequireWildcard(require("./mixins/keyboard"));
 
 var _mouse = _interopRequireWildcard(require("./mixins/mouse"));
 
-var _draw = require("./mixins/draw");
-
 var _image = require("./mixins/image");
 
 var _sound = require("./mixins/sound");
+
+var _time = require("./mixins/time");
 
 var _math = require("./mixins/math");
 
@@ -372,11 +410,33 @@ function _runGraphics() {
               }
 
               window.requestAnimationFrame(iterateGraphics);
-              updateWorld(window.world);
+              var now = new Date();
+              var delta = now - window._graphics.lastFrame;
+              var adjustedDelta = delta + window._graphics.deltaMargin;
+              var interval = 1000 / window._graphics.targetFps; // time to update
 
-              window._graphics.clearCanvas();
+              if (adjustedDelta > interval) {
+                updateWorld(window.world);
 
-              drawWorld(window.world);
+                window._graphics.clearCanvas();
+
+                drawWorld(window.world);
+
+                window._graphics.deltas.push(delta);
+
+                if (window._graphics.deltas.length > 50) window._graphics.deltas.unshift();
+                window._graphics.deltaMargin = adjustedDelta - interval;
+                window._graphics.lastFrame = now;
+              }
+
+              if (window._graphics.displayFpsInterval) {
+                if (now - window._graphics.lastDisplayFps > window._graphics.displayFpsInterval) {
+                  window._graphics.displayFps = getActualFrameRate().toFixed(2);
+                  window._graphics.lastDisplayFps = now;
+                }
+
+                (0, _draw.drawString)("".concat(window._graphics.displayFps, " FPS"), 10, 40);
+              }
             };
 
             _context.next = 4;
@@ -384,9 +444,16 @@ function _runGraphics() {
 
           case 4:
             window.world = _context.sent;
+            window._graphics.deltas = [];
+            window._graphics.startTime = new Date();
+            window._graphics.lastFrame = new Date();
+            window._graphics.deltaMargin = 0;
+            window._graphics.targetFps = 60;
+            window._graphics.lastDisplayFps = new Date();
+            window._graphics.displayFpsInterval = 0;
             iterateGraphics();
 
-          case 6:
+          case 13:
           case "end":
             return _context.stop();
         }

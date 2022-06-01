@@ -1,3 +1,4 @@
+import { drawString } from './mixins/draw'
 import KeyboardMixin from './mixins/keyboard'
 import MouseMixin from './mixins/mouse'
 
@@ -29,13 +30,43 @@ export async function runGraphics(startWorld, updateWorld, drawWorld) {
       window._graphics.clearCanvas()
       return
     }
+
     window.requestAnimationFrame(iterateGraphics)
-    updateWorld(window.world)
-    window._graphics.clearCanvas()
-    drawWorld(window.world)
+
+    const now = new Date()
+    const delta = now - window._graphics.lastFrame
+    const adjustedDelta = delta + window._graphics.deltaMargin
+    const interval = 1000 / window._graphics.targetFps
+    
+    // time to update
+    if (adjustedDelta > interval) {
+      updateWorld(window.world)
+      window._graphics.clearCanvas()
+      drawWorld(window.world)
+      
+      window._graphics.deltas.push(delta)
+      if (window._graphics.deltas.length > 50) window._graphics.deltas.unshift()
+      window._graphics.deltaMargin = adjustedDelta - interval
+      window._graphics.lastFrame = now
+    }
+    if (window._graphics.displayFpsInterval) {
+      if ((now - window._graphics.lastDisplayFps) > window._graphics.displayFpsInterval) {
+        window._graphics.displayFps = getActualFrameRate().toFixed(2)
+        window._graphics.lastDisplayFps = now
+      }
+
+      drawString(`${window._graphics.displayFps} FPS`, 10, 40)
+    }
   }
 
   window.world = await startWorld(window.world)
+  window._graphics.deltas = []
+  window._graphics.startTime = new Date()
+  window._graphics.lastFrame = new Date()
+  window._graphics.deltaMargin = 0
+  window._graphics.targetFps = 60
+  window._graphics.lastDisplayFps = new Date()
+  window._graphics.displayFpsInterval = 0
   iterateGraphics()
 }
 
@@ -95,6 +126,15 @@ export {
   sameKeys,
   getKeyName
 } from './mixins/keyboard'
+
+export { 
+  onTimer,
+  getElapsedTime,
+  resetTime,
+  setFrameRate,
+  displayFPS,
+  getActualFrameRate,
+} from './mixins/time'
 
 export { 
   convertToComponents,
