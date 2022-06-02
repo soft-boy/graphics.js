@@ -142,7 +142,6 @@ function drawString(text, x, y) {
   var color = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : "black";
   var bold = arguments.length > 5 && arguments[5] !== undefined ? arguments[5] : false;
   var italic = arguments.length > 6 && arguments[6] !== undefined ? arguments[6] : false;
-  // TODO: color and italic
   window._graphics.ctx.font = "".concat(bold ? 'bold' : '', " ").concat(italic ? 'italic' : '', " ").concat(size, "px serif");
   window._graphics.ctx.fillStyle = _colors["default"][color] || color;
 

@@ -80,7 +80,7 @@ export function fillPolygon(pointlist, color="black") {
   window._graphics.ctx.fill(); 
 }
 
-export function drawString(text, x, y, size=30, color="black", bold=false, italic=false) { // TODO: color and italic
+export function drawString(text, x, y, size=30, color="black", bold=false, italic=false) {
   window._graphics.ctx.font = `${bold ? 'bold' : ''} ${italic ? 'italic' : ''} ${size}px serif`;
   window._graphics.ctx.fillStyle = colors[color] || color
   window._graphics.ctx.fillText(text, x, y);
