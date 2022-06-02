@@ -1,5 +1,5 @@
 {
-  "name": "graphics.js",
+  "name": "@soft-boy/graphics.js",
   "version": "1.0.0",
   "main": "./build/index.js",
   "type": "module",
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neomencius/graphics.js.git"
+    "url": "git+https://github.com/soft-boy/graphics.js.git"
   },
   "author": "Eric Wang",
   "license": "CPL-1.0",
   "bugs": {
-    "url": "https://github.com/neomencius/graphics.js/issues"
+    "url": "https://github.com/soft-boy/graphics.js/issues"
   },
-  "homepage": "https://github.com/neomencius/graphics.js#readme",
+  "homepage": "https://github.com/soft-boy/graphics.js#readme",
   "devDependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.9",
