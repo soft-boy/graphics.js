@@ -2,4 +2,4 @@
 
 example usage:
 
-https://github.com/neomencius/simple-web-graphics-example
+https://github.com/neomencius/graphics.js-example

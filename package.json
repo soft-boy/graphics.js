@@ -1,6 +1,6 @@
 {
-  "name": "simple-web-graphics",
-  "version": "0.0.6",
+  "name": "graphics.js",
+  "version": "1.0.0",
   "main": "./build/index.js",
   "type": "module",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/neomencius/simple-web-graphics.git"
+    "url": "git+https://github.com/neomencius/graphics.js.git"
   },
   "author": "Eric Wang",
   "license": "CPL-1.0",
   "bugs": {
-    "url": "https://github.com/neomencius/simple-web-graphics/issues"
+    "url": "https://github.com/neomencius/graphics.js/issues"
   },
-  "homepage": "https://github.com/neomencius/simple-web-graphics#readme",
+  "homepage": "https://github.com/neomencius/graphics.js#readme",
   "devDependencies": {
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.9",
