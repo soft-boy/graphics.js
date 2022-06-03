@@ -59,7 +59,8 @@ export async function runGraphics(startWorld, updateWorld, drawWorld) {
     }
   }
 
-  window.world = await startWorld(window.world)
+  const loadedWorld = await startWorld(window.world)
+  if (loadedWorld) window.world = loadedWorld
   window._graphics.deltas = []
   window._graphics.startTime = new Date()
   window._graphics.lastFrame = new Date()

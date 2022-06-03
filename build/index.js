@@ -395,7 +395,7 @@ function runGraphics(_x, _x2, _x3) {
 
 function _runGraphics() {
   _runGraphics = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(startWorld, updateWorld, drawWorld) {
-    var iterateGraphics;
+    var iterateGraphics, loadedWorld;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -443,7 +443,8 @@ function _runGraphics() {
             return startWorld(window.world);
 
           case 4:
-            window.world = _context.sent;
+            loadedWorld = _context.sent;
+            if (loadedWorld) window.world = loadedWorld;
             window._graphics.deltas = [];
             window._graphics.startTime = new Date();
             window._graphics.lastFrame = new Date();
@@ -453,7 +454,7 @@ function _runGraphics() {
             window._graphics.displayFpsInterval = 0;
             iterateGraphics();
 
-          case 13:
+          case 14:
           case "end":
             return _context.stop();
         }
