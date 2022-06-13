@@ -147,4 +147,12 @@ export {
   getWindowWidth,
   getWindowHeight,
   getScreenSize,
+  getAllScreenSizes,
+  setBackground,
+  setWindowTitle,
+  getColorsList,
+  getFontList,
+  sizeString,
+  saveScreen,
+  getScreenPixel
 } from './mixins/misc'

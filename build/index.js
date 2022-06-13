@@ -102,10 +102,28 @@ Object.defineProperty(exports, "getActualFrameRate", {
     return _time.getActualFrameRate;
   }
 });
+Object.defineProperty(exports, "getAllScreenSizes", {
+  enumerable: true,
+  get: function get() {
+    return _misc.getAllScreenSizes;
+  }
+});
+Object.defineProperty(exports, "getColorsList", {
+  enumerable: true,
+  get: function get() {
+    return _misc.getColorsList;
+  }
+});
 Object.defineProperty(exports, "getElapsedTime", {
   enumerable: true,
   get: function get() {
     return _time.getElapsedTime;
+  }
+});
+Object.defineProperty(exports, "getFontList", {
+  enumerable: true,
+  get: function get() {
+    return _misc.getFontList;
   }
 });
 Object.defineProperty(exports, "getImageHeight", {
@@ -136,6 +154,12 @@ Object.defineProperty(exports, "getMousePosition", {
   enumerable: true,
   get: function get() {
     return _mouse.getMousePosition;
+  }
+});
+Object.defineProperty(exports, "getScreenPixel", {
+  enumerable: true,
+  get: function get() {
+    return _misc.getScreenPixel;
   }
 });
 Object.defineProperty(exports, "getScreenSize", {
@@ -284,16 +308,40 @@ Object.defineProperty(exports, "sameKeys", {
     return _keyboard.sameKeys;
   }
 });
+Object.defineProperty(exports, "saveScreen", {
+  enumerable: true,
+  get: function get() {
+    return _misc.saveScreen;
+  }
+});
+Object.defineProperty(exports, "setBackground", {
+  enumerable: true,
+  get: function get() {
+    return _misc.setBackground;
+  }
+});
 Object.defineProperty(exports, "setFrameRate", {
   enumerable: true,
   get: function get() {
     return _time.setFrameRate;
   }
 });
+Object.defineProperty(exports, "setWindowTitle", {
+  enumerable: true,
+  get: function get() {
+    return _misc.setWindowTitle;
+  }
+});
 Object.defineProperty(exports, "showMouse", {
   enumerable: true,
   get: function get() {
     return _mouse.showMouse;
+  }
+});
+Object.defineProperty(exports, "sizeString", {
+  enumerable: true,
+  get: function get() {
+    return _misc.sizeString;
   }
 });
 Object.defineProperty(exports, "stopMusic", {
