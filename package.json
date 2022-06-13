@@ -1,6 +1,6 @@
 {
   "name": "@soft-boy/graphics.js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "./build/index.js",
   "type": "module",
   "scripts": {
