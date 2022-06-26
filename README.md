@@ -2,15 +2,13 @@
 
 Javascript rewrite of Andrew Merrill's 2D python graphics library. Just like from Intro to CS~
 
-<img src="/redball.gif" width="480" height="356"></img>
+<p align='center'><img src="/redball.gif" width="480" height="356"></img><br/>Try it on <a href="https://codepen.io/pen?template=xxYmQyy">CodePen</a></p>
 
 To make an animation or game, you need to write three functions:
 
 - A function that initializes a new world
 - A function that updates the world for each frame of the animation
 - A function that draws the world on the screen
-
-Try it out with this [CodePen](https://codepen.io/pen?template=xxYmQyy).
 
 ```js
 import { makeGraphicsWindow, runGraphics, fillCircle } from '@soft-boy/graphics.js'
