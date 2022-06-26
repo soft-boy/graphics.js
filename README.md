@@ -2,7 +2,7 @@
 
 Javascript rewrite of Andrew Merrill's 2D python graphics library. Just like from Intro to CS~
 
-<img src="/redball.gif" width="401" height="298"></img>
+<img src="/redball.gif" width="480" height="356"></img>
 
 To make an animation or game, you need to write three functions:
 
