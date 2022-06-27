@@ -1,6 +1,6 @@
 # graphics.js &middot; [![NPM Version][npm-version-image]][npm-url] [![NPM Install Size][npm-install-size-image]][npm-install-size-url] [![NPM Downloads][npm-downloads-image]][npm-downloads-url]
 
-Javascript rewrite of Andrew Merrill's 2D python graphics library. Just like from Intro to CS~
+Javascript rewrite of Andrew Merrill's 2D Python graphics [library](http://inside.catlin.edu/site/compsci/resources/python/graphics/PythonGraphics.html). ~Just like from Computer Science I
 
 <p align='center'><img src="/redball.gif" width="480" height="356"></img><br/>Try it on <a href="https://codepen.io/pen?template=xxYmQyy">CodePen</a></p>
 
@@ -33,7 +33,16 @@ function drawWorld(world) {
 runGraphics(startWorld, updateWorld, drawWorld)
 ```
 
-# Installation
+# Quickstart
+
+```
+#install cli if you don't already have it
+npm install -g create-graphics-js 
+
+create-graphics-js my-game
+cd my-game
+npm start
+```
 
 # Documentation
 
