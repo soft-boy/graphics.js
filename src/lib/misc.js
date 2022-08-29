@@ -9,7 +9,7 @@ export function getWindowHeight() {
 }
 
 export function getScreenSize() {
-  return { width: window._graphics.canvas.width, height: window._graphics.canvas.height }
+  return [window._graphics.canvas.width, window._graphics.canvas.height]
 }
 
 export function getAllScreenSizes() {

@@ -2,10 +2,10 @@ const radToDeg = (rad) => 360*(rad/(2*Math.PI))
 const degToRad = (deg) => 2*Math.PI*(deg/360)
 
 export function convertToComponents(angle, length) {
-  return {
-    x: length * Math.cos(degToRad(angle)),
-    y: length * Math.sin(degToRad(angle))
-  }
+  return [
+    length*Math.cos(degToRad(angle)),
+    length*Math.sin(degToRad(angle))
+  ]
 }
 
 export function convertToAngle(x, y) {

@@ -16,10 +16,7 @@ var degToRad = function degToRad(deg) {
 };
 
 function convertToComponents(angle, length) {
-  return {
-    x: length * Math.cos(degToRad(angle)),
-    y: length * Math.sin(degToRad(angle))
-  };
+  return [length * Math.cos(degToRad(angle)), length * Math.sin(degToRad(angle))];
 }
 
 function convertToAngle(x, y) {

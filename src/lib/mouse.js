@@ -64,10 +64,10 @@ export default (superclass) => class extends superclass {
 }
 
 export function getMousePosition() {
-  return {
-    x: window._graphics.mouseX,
-    y: window._graphics.mouseY
-  }
+  return [
+    window._graphics.mouseX,
+    window._graphics.mouseY
+  ]
 }
 
 // TODO: buttons for multi button mouse
