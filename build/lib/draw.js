@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -16,8 +18,6 @@ exports.fillPolygon = fillPolygon;
 exports.fillRectangle = fillRectangle;
 
 var _colors = _interopRequireDefault(require("../lib/colors.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
 function drawPixel(x, y) {
   var color = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "black";

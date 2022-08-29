@@ -1,5 +1,7 @@
 "use strict";
 
+var _interopRequireDefault = require("@babel/runtime/helpers/interopRequireDefault");
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -15,11 +17,9 @@ exports.setBackground = setBackground;
 exports.setWindowTitle = setWindowTitle;
 exports.sizeString = sizeString;
 
+var _typeof2 = _interopRequireDefault(require("@babel/runtime/helpers/typeof"));
+
 var _colors = _interopRequireDefault(require("../lib/colors.js"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
-
-function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
 
 function getWindowWidth() {
   return window._graphics.canvas.width;
@@ -41,7 +41,7 @@ function getAllScreenSizes() {
 function setBackground(background) {
   if (typeof background === 'string') {
     window._graphics.canvas.style.backgroundColor = background;
-  } else if (_typeof(background) === 'object') {
+  } else if ((0, _typeof2["default"])(background) === 'object') {
     window._graphics.canvas.style.backgroundColor = "rgb(".concat(background[0], ",").concat(background[1], ",").concat(background[2], ")");
   }
 }
