@@ -1,4 +1,4 @@
-import colors from '../lib/colors'
+import colors from '../lib/colors.js'
 
 export function getWindowWidth() {
   return window._graphics.canvas.width

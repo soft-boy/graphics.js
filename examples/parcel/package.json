@@ -1,0 +1,10 @@
+{
+  "name": "graphics.js-example-parcel",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "dependencies": {
+    "@soft-boy/graphics.js": "file:../../",
+    "parcel-bundler": "^1.12.5"
+  }
+}

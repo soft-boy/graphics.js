@@ -1,6 +1,6 @@
 {
   "name": "@soft-boy/graphics.js",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./build/index.js",
   "type": "module",
   "scripts": {
@@ -20,5 +20,8 @@
     "@babel/cli": "^7.17.6",
     "@babel/core": "^7.17.9",
     "@babel/preset-env": "^7.16.11"
+  },
+  "dependencies": {
+    "serve": "^14.0.1"
   }
 }

@@ -1,4 +1,4 @@
-import colors from '../lib/colors'
+import colors from '../lib/colors.js'
 
 export function drawPixel(x, y, color="black") {
   window._graphics.ctx.fillStyle = colors[color] || color;

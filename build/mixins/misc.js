@@ -15,7 +15,7 @@ exports.setBackground = setBackground;
 exports.setWindowTitle = setWindowTitle;
 exports.sizeString = sizeString;
 
-var _colors = _interopRequireDefault(require("../lib/colors"));
+var _colors = _interopRequireDefault(require("../lib/colors.js"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "default": obj }; }
 
