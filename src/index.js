@@ -1,6 +1,6 @@
-import { drawString } from './mixins/draw.js'
-import KeyboardMixin from './mixins/keyboard.js'
-import MouseMixin from './mixins/mouse.js'
+import { drawString } from './lib/draw.js'
+import KeyboardMixin from './lib/keyboard.js'
+import MouseMixin from './lib/mouse.js'
 
 window._graphics = null
 
@@ -87,14 +87,14 @@ export {
   drawPolygon,
   fillPolygon,
   drawString
-} from './mixins/draw.js'
+} from './lib/draw.js'
 
 export {
   loadImage,
   drawImage,
   getImageWidth,
   getImageHeight
-} from './mixins/image.js'
+} from './lib/image.js'
 
 export {
   loadSound,
@@ -103,7 +103,7 @@ export {
   loadMusic,
   playMusic,
   stopMusic
-} from './mixins/sound.js'
+} from './lib/sound.js'
 
 export {
   getMousePosition,
@@ -116,7 +116,7 @@ export {
   hideMouse,
   showMouse,
   moveMouse
-} from './mixins/mouse.js'
+} from './lib/mouse.js'
 
 export {
   isKeyPressed,
@@ -126,7 +126,7 @@ export {
   onAnyKeyRelease,
   sameKeys,
   getKeyName
-} from './mixins/keyboard.js'
+} from './lib/keyboard.js'
 
 export { 
   onTimer,
@@ -135,13 +135,13 @@ export {
   setFrameRate,
   displayFPS,
   getActualFrameRate,
-} from './mixins/time.js'
+} from './lib/time.js'
 
 export { 
   convertToComponents,
   convertToAngle,
   pointInPolygon,
-} from './mixins/math.js'
+} from './lib/math.js'
 
 export { 
   getWindowWidth,
@@ -155,4 +155,4 @@ export {
   sizeString,
   saveScreen,
   getScreenPixel
-} from './mixins/misc.js'
+} from './lib/misc.js'

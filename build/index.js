@@ -357,21 +357,21 @@ Object.defineProperty(exports, "stopSound", {
   }
 });
 
-var _draw = require("./mixins/draw.js");
+var _draw = require("./lib/draw.js");
 
-var _keyboard = _interopRequireWildcard(require("./mixins/keyboard.js"));
+var _keyboard = _interopRequireWildcard(require("./lib/keyboard.js"));
 
-var _mouse = _interopRequireWildcard(require("./mixins/mouse.js"));
+var _mouse = _interopRequireWildcard(require("./lib/mouse.js"));
 
-var _image = require("./mixins/image.js");
+var _image = require("./lib/image.js");
 
-var _sound = require("./mixins/sound.js");
+var _sound = require("./lib/sound.js");
 
-var _time = require("./mixins/time.js");
+var _time = require("./lib/time.js");
 
-var _math = require("./mixins/math.js");
+var _math = require("./lib/math.js");
 
-var _misc = require("./mixins/misc.js");
+var _misc = require("./lib/misc.js");
 
 function _getRequireWildcardCache(nodeInterop) { if (typeof WeakMap !== "function") return null; var cacheBabelInterop = new WeakMap(); var cacheNodeInterop = new WeakMap(); return (_getRequireWildcardCache = function _getRequireWildcardCache(nodeInterop) { return nodeInterop ? cacheNodeInterop : cacheBabelInterop; })(nodeInterop); }
 
