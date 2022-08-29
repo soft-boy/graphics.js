@@ -18,7 +18,9 @@ class SimpleWebGraphics extends KeyboardMixin(MouseMixin(Base)) {
   }
 }
 
-export function makeGraphicsWindow(canvasElement) {
+export function makeGraphicsWindow(width, height, canvasElement) {
+  canvasElement.width = width
+  canvasElement.height = height
   window._graphics = new SimpleWebGraphics(canvasElement)
 }
 

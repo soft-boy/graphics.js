@@ -1,5 +1,5 @@
 import { makeGraphicsWindow, runGraphics, fillCircle } from '../../src/index.js'
-makeGraphicsWindow(document.getElementById('canvas'))
+makeGraphicsWindow(800, 600, document.getElementById('canvas'))
 
 ////////////////////////////////////////////////////////////
 // this function is called once to initialize your new world

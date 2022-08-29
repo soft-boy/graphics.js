@@ -433,7 +433,9 @@ var SimpleWebGraphics = /*#__PURE__*/function (_KeyboardMixin) {
   return SimpleWebGraphics;
 }((0, _keyboard["default"])((0, _mouse["default"])(Base)));
 
-function makeGraphicsWindow(canvasElement) {
+function makeGraphicsWindow(width, height, canvasElement) {
+  canvasElement.width = width;
+  canvasElement.height = height;
   window._graphics = new SimpleWebGraphics(canvasElement);
 }
 
