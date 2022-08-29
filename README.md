@@ -2,7 +2,7 @@
 
 Javascript rewrite of Andrew Merrill's 2D Python graphics [library](http://inside.catlin.edu/site/compsci/resources/python/graphics/PythonGraphics.html). ~Just like from Computer Science I
 
-<p align='center'><img src="/redball.gif" width="480" height="356"></img><br/>Try it on <a href="https://codepen.io/pen?template=xxYmQyy">CodePen</a></p>
+<p align='center'><img src="/redball.gif" width="480" height="356"></img><br/>Try it on <a href="https://codepen.io/pen/eYMqdyM">CodePen</a></p>
 
 To make an animation or game, you need to write three functions:
 
