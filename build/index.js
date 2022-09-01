@@ -430,6 +430,13 @@ function makeGraphicsWindow(width, height, canvasElement) {
   canvasElement.width = width;
   canvasElement.height = height;
   window._graphics = new SimpleWebGraphics(canvasElement);
+  window._graphics.deltas = [];
+  window._graphics.startTime = new Date();
+  window._graphics.lastFrame = new Date();
+  window._graphics.deltaMargin = 0;
+  window._graphics.targetFps = 60;
+  window._graphics.lastDisplayFps = new Date();
+  window._graphics.displayFpsInterval = 0;
 }
 
 function runGraphics(_x, _x2, _x3) {
@@ -488,16 +495,9 @@ function _runGraphics() {
           case 4:
             loadedWorld = _context.sent;
             if (loadedWorld) window.world = loadedWorld;
-            window._graphics.deltas = [];
-            window._graphics.startTime = new Date();
-            window._graphics.lastFrame = new Date();
-            window._graphics.deltaMargin = 0;
-            window._graphics.targetFps = 60;
-            window._graphics.lastDisplayFps = new Date();
-            window._graphics.displayFpsInterval = 0;
             iterateGraphics();
 
-          case 14:
+          case 7:
           case "end":
             return _context.stop();
         }

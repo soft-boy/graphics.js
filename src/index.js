@@ -22,6 +22,13 @@ export function makeGraphicsWindow(width, height, canvasElement) {
   canvasElement.width = width
   canvasElement.height = height
   window._graphics = new SimpleWebGraphics(canvasElement)
+  window._graphics.deltas = []
+  window._graphics.startTime = new Date()
+  window._graphics.lastFrame = new Date()
+  window._graphics.deltaMargin = 0
+  window._graphics.targetFps = 60
+  window._graphics.lastDisplayFps = new Date()
+  window._graphics.displayFpsInterval = 0
 }
 
 export async function runGraphics(startWorld, updateWorld, drawWorld) {
@@ -63,13 +70,7 @@ export async function runGraphics(startWorld, updateWorld, drawWorld) {
 
   const loadedWorld = await startWorld(window.world)
   if (loadedWorld) window.world = loadedWorld
-  window._graphics.deltas = []
-  window._graphics.startTime = new Date()
-  window._graphics.lastFrame = new Date()
-  window._graphics.deltaMargin = 0
-  window._graphics.targetFps = 60
-  window._graphics.lastDisplayFps = new Date()
-  window._graphics.displayFpsInterval = 0
+  
   iterateGraphics()
 }
 
