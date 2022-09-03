@@ -107,17 +107,19 @@ function fillRectangle(x, y, width, height) {
 
 function drawPolygon(pointlist) {
   var color = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "black";
-  var thickness = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 2;
+  var thickness = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
   window._graphics.ctx.strokeStyle = _colors["default"][color] || color;
   window._graphics.ctx.lineWidth = thickness;
 
   window._graphics.ctx.beginPath();
 
-  window._graphics.ctx.moveTo(pointlist[0]['x'], pointlist[0]['y']);
+  window._graphics.ctx.moveTo(pointlist[0][0], pointlist[0][1]);
 
   for (var i = 1; i < pointlist.length; i++) {
-    window._graphics.ctx.lineTo(pointlist[i]['x'], pointlist[i]['y']);
+    window._graphics.ctx.lineTo(pointlist[i][0], pointlist[i][1]);
   }
+
+  window._graphics.ctx.closePath();
 
   window._graphics.ctx.stroke();
 }
