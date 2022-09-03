@@ -379,11 +379,11 @@ var _keyboard = _interopRequireWildcard(require("./lib/keyboard.js"));
 
 var _mouse = _interopRequireWildcard(require("./lib/mouse.js"));
 
+var _time = require("./lib/time.js");
+
 var _image = require("./lib/image.js");
 
 var _sound = require("./lib/sound.js");
-
-var _time = require("./lib/time.js");
 
 var _math = require("./lib/math.js");
 
@@ -481,7 +481,7 @@ function _runGraphics() {
 
               if (window._graphics.displayFpsInterval) {
                 if (now - window._graphics.lastDisplayFps > window._graphics.displayFpsInterval) {
-                  window._graphics.displayFps = getActualFrameRate().toFixed(2);
+                  window._graphics.displayFps = (0, _time.getActualFrameRate)().toFixed(2);
                   window._graphics.lastDisplayFps = now;
                 }
 

@@ -1,6 +1,7 @@
 import { drawString } from './lib/draw.js'
 import KeyboardMixin from './lib/keyboard.js'
 import MouseMixin from './lib/mouse.js'
+import { getActualFrameRate } from './lib/time.js'
 
 window._graphics = null
 
