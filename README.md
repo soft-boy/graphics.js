@@ -150,18 +150,6 @@ Examples:
 ```js
 runGraphics(startWorld, updateWorld, drawWorld)
 ```
-### `animate(drawFunction, timeLimit, repeat=false)`
-For a non-interactive, time-based program, you should call this function on the very last line of your program.
-  - `drawFunction`: `function`   the name of the function that draws the frames of your animation
-  - `timeLimit`: `number` the length of your animation in milliseconds
-  - `repeat`: `boolean` true if your animation should repeat after  `timeLimit`  milliseconds, and false if it should end after running once (optional; defaults to false)
-
-Returns: `undefined` (nothing)
-
-Examples:
-```js
-animate(drawFrame, 6000, True)
-```
 ### `endGraphics()`
 Stops the animation from running.
 
