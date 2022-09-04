@@ -18,6 +18,8 @@ export function getAllScreenSizes() {
 
 // todo support image
 export function setBackground(background) {
+  if (background === null) return
+
   if (typeof(background) === 'string') {
     window._graphics.canvas.style.backgroundColor = background
   }

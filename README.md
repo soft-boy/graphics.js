@@ -313,7 +313,7 @@ drawString("You Win", 20, 550)
 drawString(score, 50, 200, 40, "red")
 ```
 ## Image Functions
-### `loadImage(file, rotate=0, scale=1, flipHorizontal=false, flipVertical=false)`
+### `async loadImage(file, rotate=0, scale=1, flipHorizontal=false, flipVertical=false)`
 Loads a graphics image from a disk file.  Unless you want to draw a rectangular image, your image's background should be transparent, or you should specify the color of the image's background for the _transparentColor_ parameter (see below).  Images are cached, so if you load the same image with the same options more than once, it will reuse the originally loaded image for efficiency.
   - `file`: `number` the file that contains the image
   - `rotate`: `number` the number of degrees to rotate the image counter-clockwise  (use a negative number to rotate clockwise)  (optional; defaults to 0, meaning no rotation)
@@ -325,8 +325,8 @@ Returns: `object` an image that you can pass to the drawImage function (see belo
 
 Examples:
 ```js
-let soccerball = loadImage(require("./soccer.jpg"))
-let soccerball = loadImage(require("./soccer.jpg"), scale=0.5)
+world.soccerball = await loadImage(require("./soccer.jpg"))
+world.soccerball = await loadImage(require("./soccer.jpg"), scale=0.5)
 ```
 ### `drawImage(image, x, y, rotate=0, scale=1, flipHorizontal=false, flipVertical=false)`
 Draws a graphic image on the screen
@@ -371,7 +371,7 @@ let height = getImageHeight(soccerball)
 ```
 ## Sound Functions
 We have two categories for audio functions. Sound functions are for short sound clips like sound effects. Music functions are intended for longer music clips
-### `loadSound(file, volume=1)`
+### `async loadSound(file, volume=1)`
 Loads a sound clip from a disk file (must be in WAV or OGG format, sorry no MP3s).
   - `file`: `string` the text to display
   - `volume`: `number` the x coordinate of the top-left corner of the text
@@ -380,8 +380,8 @@ Returns: `object` a sound that you can pass to the `playSound` function (see bel
 
 Examples:
 ```js
-let beep = loadSound(require("./beep.wav"))
-let soundtrack = loadSound(require("./funkybeat.wav", 0.3))
+world.beep = await loadSound(require("./beep.wav"))
+world.soundtrack = await loadSound(require("./funkybeat.wav", 0.3))
 ```
 ### `playSound(sound, repeat=false)`
 Plays a sound clip on your computer speakers.

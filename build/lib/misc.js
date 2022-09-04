@@ -39,6 +39,8 @@ function getAllScreenSizes() {
 
 
 function setBackground(background) {
+  if (background === null) return;
+
   if (typeof background === 'string') {
     window._graphics.canvas.style.backgroundColor = background;
   } else if ((0, _typeof2["default"])(background) === 'object') {
