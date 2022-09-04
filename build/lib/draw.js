@@ -130,10 +130,10 @@ function fillPolygon(pointlist) {
 
   window._graphics.ctx.beginPath();
 
-  window._graphics.ctx.moveTo(pointlist[0]['x'], pointlist[0]['y']);
+  window._graphics.ctx.moveTo(pointlist[0][0], pointlist[0][1]);
 
   for (var i = 1; i < pointlist.length; i++) {
-    window._graphics.ctx.lineTo(pointlist[i]['x'], pointlist[i]['y']);
+    window._graphics.ctx.lineTo(pointlist[i][0], pointlist[i][1]);
   }
 
   window._graphics.ctx.fill();
