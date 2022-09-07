@@ -50,7 +50,7 @@ Visit [https://soft-boy.gitbook.io/graphicsjs](https://soft-boy.gitbook.io/graph
 
 # Examples
 
- - Pong: https://github.com/soft-boy/graphics.js-example
+ - Pong: https://github.com/soft-boy/graphics.js-pong
  - Platformer: https://github.com/soft-boy/graphics.js-platformer
 
 [npm-downloads-image]: https://badgen.net/npm/dm/@soft-boy/graphics.js
